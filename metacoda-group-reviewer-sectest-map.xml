@@ -599,4 +599,103 @@ limitations under the License.
       <LENGTH>5</LENGTH>
     </COLUMN>
   </TABLE>
+  <TABLE name="groupAppliedACTs">
+    <TABLE-PATH syntax="XPATH">/SecTest/Groups/Group/AccessControls/ACT</TABLE-PATH>
+    <COLUMN name="groupRepoName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="groupName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="actRepoName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/AccessControls/ACT/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="actName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/AccessControls/ACT/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="groupAppliedGroupACEs">
+    <TABLE-PATH syntax="XPATH">/SecTest/Groups/Group/AccessControls/Group</TABLE-PATH>
+    <COLUMN name="groupRepoName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="groupName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="aceGroupRepoName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/AccessControls/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="aceGroupName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/AccessControls/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="acePermissions">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/AccessControls/Group/@permissions</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>512</LENGTH>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="groupAppliedUserACEs">
+    <TABLE-PATH syntax="XPATH">/SecTest/Groups/Group/AccessControls/User</TABLE-PATH>
+    <COLUMN name="groupRepoName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="groupName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="aceUserRepoName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/AccessControls/User/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="aceUserName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/AccessControls/User/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="acePermissions">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/AccessControls/User/@permissions</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>512</LENGTH>
+    </COLUMN>
+  </TABLE>
 </SXLEMAP>

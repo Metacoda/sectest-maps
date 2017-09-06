@@ -76,8 +76,21 @@ title1 "Role Memberships (direct+indirect) for Users";
 proc print data=sectest.userRoleMemberships;
 run;
 
+* The capabilities table can be very large: #rows = #user * #capabilities;
 title1 "Capabilities for Users";
-proc print data=sectest.userCapabilities;
+proc print data=sectest.userCapabilities(obs=50);
+run;
+
+title1 "ACTs applied to Users";
+proc print data=sectest.userAppliedACTs;
+run;
+
+title1 "Group ACEs applied to Users";
+proc print data=sectest.userAppliedGroupACEs;
+run;
+
+title1 "User ACEs applied to Users";
+proc print data=sectest.userAppliedUserACEs;
 run;
 
 libname sectest;

@@ -411,4 +411,103 @@ limitations under the License.
       <LENGTH>5</LENGTH>
     </COLUMN>
   </TABLE>
+  <TABLE name="userAppliedACTs">
+    <TABLE-PATH syntax="XPATH">/SecTest/Users/User/AccessControls/ACT</TABLE-PATH>
+    <COLUMN name="userRepoName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Users/User/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="userName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Users/User/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="actRepoName">
+      <PATH syntax="XPATH">/SecTest/Users/User/AccessControls/ACT/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="actName">
+      <PATH syntax="XPATH">/SecTest/Users/User/AccessControls/ACT/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="userAppliedGroupACEs">
+    <TABLE-PATH syntax="XPATH">/SecTest/Users/User/AccessControls/Group</TABLE-PATH>
+    <COLUMN name="userRepoName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Users/User/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="userName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Users/User/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="aceGroupRepoName">
+      <PATH syntax="XPATH">/SecTest/Users/User/AccessControls/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="aceGroupName">
+      <PATH syntax="XPATH">/SecTest/Users/User/AccessControls/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="acePermissions">
+      <PATH syntax="XPATH">/SecTest/Users/User/AccessControls/Group/@permissions</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>512</LENGTH>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="userAppliedUserACEs">
+    <TABLE-PATH syntax="XPATH">/SecTest/Users/User/AccessControls/User</TABLE-PATH>
+    <COLUMN name="userRepoName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Users/User/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="userName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Users/User/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="aceUserRepoName">
+      <PATH syntax="XPATH">/SecTest/Users/User/AccessControls/User/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="aceUserName">
+      <PATH syntax="XPATH">/SecTest/Users/User/AccessControls/User/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="acePermissions">
+      <PATH syntax="XPATH">/SecTest/Users/User/AccessControls/User/@permissions</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>512</LENGTH>
+    </COLUMN>
+  </TABLE>
 </SXLEMAP>
