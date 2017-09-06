@@ -1,0 +1,26 @@
+# Ignore any IntelliJ project files.
+/.idea
+/*.iml
+
+# Ignore any MkDocs generated site
+/site/
+
+# Ignore any input Metadata Security Test XML files exported from Metacoda Plug-ins
+/input/*.xml
+
+# Ignore any generated sample reports
+/output/*.html
+
+# Ignore any personal SAS autoexec for testing samples.
+/autoexec.sas
+
+# Ignore any SAS logs and output
+**/*.log
+**/*.lst
+
+# Ignore any scratch notes and dir.
+/scratch.txt
+/scratch
+
+# Ignore various temporary files.
+**/*.swp
