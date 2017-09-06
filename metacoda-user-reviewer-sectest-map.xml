@@ -31,32 +31,32 @@ limitations under the License.
 <SXLEMAP version="1.2" name="metacodaUserReviewerSecTestMap">
   <TABLE name="users">
     <TABLE-PATH syntax="XPATH">/SecTest/Users/User</TABLE-PATH>
-    <COLUMN name="repoName" retain="YES">
+    <COLUMN name="repoName">
       <PATH syntax="XPATH">/SecTest/Users/User/@repository</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
       <DEFAULT>Foundation</DEFAULT>
     </COLUMN>
-    <COLUMN name="name" retain="YES">
+    <COLUMN name="name">
       <PATH syntax="XPATH">/SecTest/Users/User/@name</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
     </COLUMN>
-    <COLUMN name="displayName" retain="YES">
+    <COLUMN name="displayName">
       <PATH syntax="XPath">/SecTest/Users/User/@displayName</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>1024</LENGTH>
     </COLUMN>
-    <COLUMN name="desc" retain="YES">
+    <COLUMN name="desc">
       <PATH syntax="XPath">/SecTest/Users/User/@desc</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>800</LENGTH>
     </COLUMN>
-    <COLUMN name="title" retain="YES">
+    <COLUMN name="title">
       <PATH syntax="XPath">/SecTest/Users/User/@title</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
@@ -183,7 +183,7 @@ limitations under the License.
       <LENGTH>5</LENGTH>
     </COLUMN>
   </TABLE>
-  <TABLE name="userDirectGroups">
+  <TABLE name="userDirectGroupMemberships">
     <TABLE-PATH syntax="XPATH">/SecTest/Users/User/DirectGroupMemberships/Group</TABLE-PATH>
     <COLUMN name="userRepoName" retain="YES">
       <PATH syntax="XPATH">/SecTest/Users/User/@repository</PATH>
@@ -198,21 +198,21 @@ limitations under the License.
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
     </COLUMN>
-    <COLUMN name="groupRepoName">
+    <COLUMN name="parentGroupRepoName">
       <PATH syntax="XPATH">/SecTest/Users/User/DirectGroupMemberships/Group/@repository</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
       <DEFAULT>Foundation</DEFAULT>
     </COLUMN>
-    <COLUMN name="groupName">
+    <COLUMN name="parentGroupName">
       <PATH syntax="XPATH">/SecTest/Users/User/DirectGroupMemberships/Group/@name</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
     </COLUMN>
   </TABLE>
-  <TABLE name="userIndirectGroups">
+  <TABLE name="userIndirectGroupMemberships">
     <TABLE-PATH syntax="XPATH">/SecTest/Users/User/IndirectGroupMemberships/Group</TABLE-PATH>
     <COLUMN name="userRepoName" retain="YES">
       <PATH syntax="XPATH">/SecTest/Users/User/@repository</PATH>
@@ -227,14 +227,14 @@ limitations under the License.
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
     </COLUMN>
-    <COLUMN name="groupRepoName">
+    <COLUMN name="parentGroupRepoName">
       <PATH syntax="XPATH">/SecTest/Users/User/IndirectGroupMemberships/Group/@repository</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
       <DEFAULT>Foundation</DEFAULT>
     </COLUMN>
-    <COLUMN name="groupName">
+    <COLUMN name="parentGroupName">
       <PATH syntax="XPATH">/SecTest/Users/User/IndirectGroupMemberships/Group/@name</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
@@ -244,10 +244,9 @@ limitations under the License.
       <PATH syntax="XPATH">/SecTest/Users/User/IndirectGroupMemberships/Group/@level</PATH>
       <TYPE>numeric</TYPE>
       <DATATYPE>integer</DATATYPE>
-      <LENGTH>8</LENGTH>
     </COLUMN>
   </TABLE>
-  <TABLE name="userGroups">
+  <TABLE name="userGroupMemberships">
     <TABLE-PATH syntax="XPATH">/SecTest/Users/User/GroupMemberships/Group</TABLE-PATH>
     <COLUMN name="userRepoName" retain="YES">
       <PATH syntax="XPATH">/SecTest/Users/User/@repository</PATH>
@@ -262,14 +261,14 @@ limitations under the License.
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
     </COLUMN>
-    <COLUMN name="groupRepoName">
+    <COLUMN name="parentGroupRepoName">
       <PATH syntax="XPATH">/SecTest/Users/User/GroupMemberships/Group/@repository</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
       <DEFAULT>Foundation</DEFAULT>
     </COLUMN>
-    <COLUMN name="groupName">
+    <COLUMN name="parentGroupName">
       <PATH syntax="XPATH">/SecTest/Users/User/GroupMemberships/Group/@name</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
@@ -279,10 +278,9 @@ limitations under the License.
       <PATH syntax="XPATH">/SecTest/Users/User/GroupMemberships/Group/@level</PATH>
       <TYPE>numeric</TYPE>
       <DATATYPE>integer</DATATYPE>
-      <LENGTH>8</LENGTH>
     </COLUMN>
   </TABLE>
-  <TABLE name="userDirectRoles">
+  <TABLE name="userDirectRoleMemberships">
     <TABLE-PATH syntax="XPATH">/SecTest/Users/User/DirectRoleMemberships/Role</TABLE-PATH>
     <COLUMN name="userRepoName" retain="YES">
       <PATH syntax="XPATH">/SecTest/Users/User/@repository</PATH>
@@ -297,21 +295,21 @@ limitations under the License.
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
     </COLUMN>
-    <COLUMN name="roleRepoName">
+    <COLUMN name="parentRoleRepoName">
       <PATH syntax="XPATH">/SecTest/Users/User/DirectRoleMemberships/Role/@repository</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
       <DEFAULT>Foundation</DEFAULT>
     </COLUMN>
-    <COLUMN name="roleName">
+    <COLUMN name="parentRoleName">
       <PATH syntax="XPATH">/SecTest/Users/User/DirectRoleMemberships/Role/@name</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
     </COLUMN>
   </TABLE>
-  <TABLE name="userIndirectRoles">
+  <TABLE name="userIndirectRoleMemberships">
     <TABLE-PATH syntax="XPATH">/SecTest/Users/User/IndirectRoleMemberships/Role</TABLE-PATH>
     <COLUMN name="userRepoName" retain="YES">
       <PATH syntax="XPATH">/SecTest/Users/User/@repository</PATH>
@@ -326,14 +324,14 @@ limitations under the License.
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
     </COLUMN>
-    <COLUMN name="roleRepoName">
+    <COLUMN name="parentRoleRepoName">
       <PATH syntax="XPATH">/SecTest/Users/User/IndirectRoleMemberships/Role/@repository</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
       <DEFAULT>Foundation</DEFAULT>
     </COLUMN>
-    <COLUMN name="roleName">
+    <COLUMN name="parentRoleName">
       <PATH syntax="XPATH">/SecTest/Users/User/IndirectRoleMemberships/Role/@name</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
@@ -343,10 +341,9 @@ limitations under the License.
       <PATH syntax="XPATH">/SecTest/Users/User/IndirectRoleMemberships/Role/@level</PATH>
       <TYPE>numeric</TYPE>
       <DATATYPE>integer</DATATYPE>
-      <LENGTH>8</LENGTH>
     </COLUMN>
   </TABLE>
-  <TABLE name="userRoles">
+  <TABLE name="userRoleMemberships">
     <TABLE-PATH syntax="XPATH">/SecTest/Users/User/RoleMemberships/Role</TABLE-PATH>
     <COLUMN name="userRepoName" retain="YES">
       <PATH syntax="XPATH">/SecTest/Users/User/@repository</PATH>
@@ -361,14 +358,14 @@ limitations under the License.
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
     </COLUMN>
-    <COLUMN name="roleRepoName">
+    <COLUMN name="parentRoleRepoName">
       <PATH syntax="XPATH">/SecTest/Users/User/RoleMemberships/Role/@repository</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
       <DEFAULT>Foundation</DEFAULT>
     </COLUMN>
-    <COLUMN name="roleName">
+    <COLUMN name="parentRoleName">
       <PATH syntax="XPATH">/SecTest/Users/User/RoleMemberships/Role/@name</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
@@ -378,7 +375,6 @@ limitations under the License.
       <PATH syntax="XPATH">/SecTest/Users/User/RoleMemberships/Role/@level</PATH>
       <TYPE>numeric</TYPE>
       <DATATYPE>integer</DATATYPE>
-      <LENGTH>8</LENGTH>
     </COLUMN>
   </TABLE>
   <TABLE name="userCapabilities">

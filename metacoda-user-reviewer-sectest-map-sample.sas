@@ -30,7 +30,7 @@ limitations under the License.
 */
 
 ods listing close;
-ods html body='output/user-reviewer-complete.html';
+ods html body='output/metacoda-user-reviewer-sectest-data.html';
 
 filename sectest "input/metacoda-user-reviewer-sectest.xml" lrecl=32767 encoding="utf-8";
 filename map "metacoda-user-reviewer-sectest-map.xml" lrecl=32767 encoding="utf-8";
@@ -40,43 +40,43 @@ title1 "Users";
 proc print data=sectest.users;
 run;
 
-title1 "User Direct Logins";
+title1 "Direct Logins for Users";
 proc print data=sectest.userDirectLogins;
 run;
 
-title1 "User Indirect Logins";
+title1 "Indirect Logins for Users";
 proc print data=sectest.userIndirectLogins;
 run;
 
-title1 "User Logins (direct+indirect)";
+title1 "Logins (direct+indirect) for Users";
 proc print data=sectest.userLogins;
 run;
 
-title1 "User Group Direct Memberships";
-proc print data=sectest.userDirectGroups;
+title1 "Direct Group Memberships for Users";
+proc print data=sectest.userDirectGroupMemberships;
 run;
 
-title1 "User Group Indirect Memberships";
-proc print data=sectest.userIndirectGroups;
+title1 "Indirect Group Memberships for Users";
+proc print data=sectest.userIndirectGroupMemberships;
 run;
 
-title1 "User Group Memberships (direct+indirect)";
-proc print data=sectest.userGroups;
+title1 "Group Memberships (direct+indirect) for Users";
+proc print data=sectest.userGroupMemberships;
 run;
 
-title1 "User Role Direct Memberships";
-proc print data=sectest.userDirectRoles;
+title1 "Direct Role Memberships for Users";
+proc print data=sectest.userDirectRoleMemberships;
 run;
 
-title1 "User Role Indirect Memberships";
-proc print data=sectest.userIndirectRoles;
+title1 "Indirect Role Memberships for Users";
+proc print data=sectest.userIndirectRoleMemberships;
 run;
 
-title1 "User Role Memberships (direct+indirect)";
-proc print data=sectest.userRoles;
+title1 "Role Memberships (direct+indirect) for Users";
+proc print data=sectest.userRoleMemberships;
 run;
 
-title1 "User Capabilities";
+title1 "Capabilities for Users";
 proc print data=sectest.userCapabilities;
 run;
 
