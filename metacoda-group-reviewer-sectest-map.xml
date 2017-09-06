@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+
+Map: metacoda-group-reviewer-sectest-map.xml
+***********************************************************************
+
+A SAS XML Libname Engine map used to import a Metadata Security Test XML file
+exported from the Metacoda Security Plug-ins Group Reviewer.
+   
+Authors:
+ * Paul Homes <paul.homes@metacoda.com>
+
+***********************************************************************
+
+Copyright 2017 Metacoda Pty Ltd
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+***********************************************************************
+-->
+<SXLEMAP version="1.2" name="metacodaGroupReviewerSecTestMap">
+  <TABLE name="groups">
+    <TABLE-PATH syntax="XPATH">/SecTest/Groups/Group</TABLE-PATH>
+    <COLUMN name="repoName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="name">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="displayName">
+      <PATH syntax="XPath">/SecTest/Groups/Group/@displayName</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>1024</LENGTH>
+    </COLUMN>
+    <COLUMN name="desc">
+      <PATH syntax="XPath">/SecTest/Groups/Group/@desc</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>800</LENGTH>
+    </COLUMN>
+    <COLUMN name="isExternal">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@external</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>5</LENGTH>
+    </COLUMN>
+    <COLUMN name="hasLogin">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@login</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>5</LENGTH>
+    </COLUMN>
+    <COLUMN name="hasSelfAsMember">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@hasSelfAsMember</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>5</LENGTH>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="groupDirectLogins">
+    <TABLE-PATH syntax="XPATH">/SecTest/Groups/Group/DirectLogins/Login</TABLE-PATH>
+    <COLUMN name="groupRepoName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="groupName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="authDomainName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/DirectLogins/Login/@authDomain</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="userId">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/DirectLogins/Login/@userId</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>512</LENGTH>
+    </COLUMN>
+    <COLUMN name="hasPassword">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/DirectLogins/Login/@hasPassword</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>5</LENGTH>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="groupIndirectLogins">
+    <TABLE-PATH syntax="XPATH">/SecTest/Groups/Group/IndirectLogins/Login</TABLE-PATH>
+    <COLUMN name="groupRepoName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="groupName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="authDomainName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/IndirectLogins/Login/@authDomain</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="userId">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/IndirectLogins/Login/@userId</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>512</LENGTH>
+    </COLUMN>
+    <COLUMN name="hasPassword">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/IndirectLogins/Login/@hasPassword</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>5</LENGTH>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="groupLogins">
+    <TABLE-PATH syntax="XPATH">/SecTest/Groups/Group/Logins/Login</TABLE-PATH>
+    <COLUMN name="groupRepoName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="groupName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="authDomainName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/Logins/Login/@authDomain</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="userId">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/Logins/Login/@userId</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>512</LENGTH>
+    </COLUMN>
+    <COLUMN name="hasPassword">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/Logins/Login/@hasPassword</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>5</LENGTH>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="groupDirectGroupMembers">
+    <TABLE-PATH syntax="XPATH">/SecTest/Groups/Group/DirectMembers/Group</TABLE-PATH>
+    <COLUMN name="groupRepoName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="groupName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="memberGroupRepoName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/DirectMembers/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="memberGroupName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/DirectMembers/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="groupDirectUserMembers">
+    <TABLE-PATH syntax="XPATH">/SecTest/Groups/Group/DirectMembers/User</TABLE-PATH>
+    <COLUMN name="groupRepoName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="groupName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="memberUserRepoName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/DirectMembers/User/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="memberUserName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/DirectMembers/User/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="groupIndirectGroupMembers">
+    <TABLE-PATH syntax="XPATH">/SecTest/Groups/Group/IndirectMembers/Group</TABLE-PATH>
+    <COLUMN name="groupRepoName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="groupName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="memberGroupRepoName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/IndirectMembers/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="memberGroupName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/IndirectMembers/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="level">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/IndirectMembers/Group/@level</PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="groupIndirectUserMembers">
+    <TABLE-PATH syntax="XPATH">/SecTest/Groups/Group/IndirectMembers/User</TABLE-PATH>
+    <COLUMN name="groupRepoName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="groupName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="memberUserRepoName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/IndirectMembers/User/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="memberUserName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/IndirectMembers/User/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="level">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/IndirectMembers/User/@level</PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="groupGroupMembers">
+    <TABLE-PATH syntax="XPATH">/SecTest/Groups/Group/Members/Group</TABLE-PATH>
+    <COLUMN name="groupRepoName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="groupName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="memberGroupRepoName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/Members/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="memberGroupName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/Members/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="level">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/Members/Group/@level</PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="groupUserMembers">
+    <TABLE-PATH syntax="XPATH">/SecTest/Groups/Group/Members/User</TABLE-PATH>
+    <COLUMN name="groupRepoName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="groupName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="memberUserRepoName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/Members/User/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="memberUserName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/Members/User/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="level">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/Members/User/@level</PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="groupDirectGroupMemberships">
+    <TABLE-PATH syntax="XPATH">/SecTest/Groups/Group/DirectGroupMemberships/Group</TABLE-PATH>
+    <COLUMN name="groupRepoName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="groupName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="parentGroupRepoName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/DirectGroupMemberships/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="parentGroupName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/DirectGroupMemberships/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="groupIndirectGroupMemberships">
+    <TABLE-PATH syntax="XPATH">/SecTest/Groups/Group/IndirectGroupMemberships/Group</TABLE-PATH>
+    <COLUMN name="groupRepoName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="groupName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="parentGroupRepoName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/IndirectGroupMemberships/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="parentGroupName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/IndirectGroupMemberships/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="level">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/IndirectGroupMemberships/Group/@level</PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="groupGroupMemberships">
+    <TABLE-PATH syntax="XPATH">/SecTest/Groups/Group/GroupMemberships/Group</TABLE-PATH>
+    <COLUMN name="groupRepoName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="groupName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="parentGroupRepoName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/GroupMemberships/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="parentGroupName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/GroupMemberships/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="level">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/GroupMemberships/Group/@level</PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="groupDirectRoleMemberships">
+    <TABLE-PATH syntax="XPATH">/SecTest/Groups/Group/DirectRoleMemberships/Role</TABLE-PATH>
+    <COLUMN name="groupRepoName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="groupName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="parentRoleRepoName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/DirectRoleMemberships/Role/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="parentRoleName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/DirectRoleMemberships/Role/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="groupIndirectRoleMemberships">
+    <TABLE-PATH syntax="XPATH">/SecTest/Groups/Group/IndirectRoleMemberships/Role</TABLE-PATH>
+    <COLUMN name="groupRepoName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="groupName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="parentRoleRepoName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/IndirectRoleMemberships/Role/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="parentRoleName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/IndirectRoleMemberships/Role/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="level">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/IndirectRoleMemberships/Role/@level</PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="groupRoleMemberships">
+    <TABLE-PATH syntax="XPATH">/SecTest/Groups/Group/RoleMemberships/Role</TABLE-PATH>
+    <COLUMN name="groupRepoName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="groupName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="parentRoleRepoName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/RoleMemberships/Role/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="parentRoleName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/RoleMemberships/Role/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="level">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/RoleMemberships/Role/@level</PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="groupCapabilities">
+    <TABLE-PATH syntax="XPATH">/SecTest/Groups/Group/Capabilities/Capability</TABLE-PATH>
+    <COLUMN name="groupRepoName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="groupName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="capabilityName">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/Capabilities/Capability/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="folder">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/Capabilities/Capability/@parentFolder</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>2048</LENGTH>
+    </COLUMN>
+    <COLUMN name="isGranted">
+      <PATH syntax="XPATH">/SecTest/Groups/Group/Capabilities/Capability/@granted</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>5</LENGTH>
+    </COLUMN>
+  </TABLE>
+</SXLEMAP>
