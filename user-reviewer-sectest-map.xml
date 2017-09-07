@@ -28,9 +28,14 @@ limitations under the License.
 
 ***********************************************************************
 -->
-<SXLEMAP version="1.2" name="metacodaUserReviewerSecTestMap">
+<SXLEMAP version="1.2">
   <TABLE name="users">
     <TABLE-PATH syntax="XPATH">/SecTest/Users/User</TABLE-PATH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Users/User</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
     <COLUMN name="repoName">
       <PATH syntax="XPATH">/SecTest/Users/User/@repository</PATH>
       <TYPE>character</TYPE>
@@ -83,18 +88,10 @@ limitations under the License.
   </TABLE>
   <TABLE name="userDirectLogins">
     <TABLE-PATH syntax="XPATH">/SecTest/Users/User/DirectLogins/Login</TABLE-PATH>
-    <COLUMN name="userRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Users/User/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
-    </COLUMN>
-    <COLUMN name="userName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Users/User/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Users/User</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
     <COLUMN name="authDomainName">
       <PATH syntax="XPATH">/SecTest/Users/User/DirectLogins/Login/@authDomain</PATH>
@@ -117,18 +114,10 @@ limitations under the License.
   </TABLE>
   <TABLE name="userIndirectLogins">
     <TABLE-PATH syntax="XPATH">/SecTest/Users/User/IndirectLogins/Login</TABLE-PATH>
-    <COLUMN name="userRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Users/User/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
-    </COLUMN>
-    <COLUMN name="userName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Users/User/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Users/User</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
     <COLUMN name="authDomainName">
       <PATH syntax="XPATH">/SecTest/Users/User/IndirectLogins/Login/@authDomain</PATH>
@@ -151,18 +140,10 @@ limitations under the License.
   </TABLE>
   <TABLE name="userLogins">
     <TABLE-PATH syntax="XPATH">/SecTest/Users/User/Logins/Login</TABLE-PATH>
-    <COLUMN name="userRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Users/User/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
-    </COLUMN>
-    <COLUMN name="userName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Users/User/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Users/User</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
     <COLUMN name="authDomainName">
       <PATH syntax="XPATH">/SecTest/Users/User/Logins/Login/@authDomain</PATH>
@@ -185,18 +166,10 @@ limitations under the License.
   </TABLE>
   <TABLE name="userDirectGroupMemberships">
     <TABLE-PATH syntax="XPATH">/SecTest/Users/User/DirectGroupMemberships/Group</TABLE-PATH>
-    <COLUMN name="userRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Users/User/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
-    </COLUMN>
-    <COLUMN name="userName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Users/User/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Users/User</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
     <COLUMN name="parentGroupRepoName">
       <PATH syntax="XPATH">/SecTest/Users/User/DirectGroupMemberships/Group/@repository</PATH>
@@ -214,18 +187,10 @@ limitations under the License.
   </TABLE>
   <TABLE name="userIndirectGroupMemberships">
     <TABLE-PATH syntax="XPATH">/SecTest/Users/User/IndirectGroupMemberships/Group</TABLE-PATH>
-    <COLUMN name="userRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Users/User/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
-    </COLUMN>
-    <COLUMN name="userName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Users/User/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Users/User</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
     <COLUMN name="parentGroupRepoName">
       <PATH syntax="XPATH">/SecTest/Users/User/IndirectGroupMemberships/Group/@repository</PATH>
@@ -248,18 +213,10 @@ limitations under the License.
   </TABLE>
   <TABLE name="userGroupMemberships">
     <TABLE-PATH syntax="XPATH">/SecTest/Users/User/GroupMemberships/Group</TABLE-PATH>
-    <COLUMN name="userRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Users/User/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
-    </COLUMN>
-    <COLUMN name="userName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Users/User/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Users/User</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
     <COLUMN name="parentGroupRepoName">
       <PATH syntax="XPATH">/SecTest/Users/User/GroupMemberships/Group/@repository</PATH>
@@ -282,18 +239,10 @@ limitations under the License.
   </TABLE>
   <TABLE name="userDirectRoleMemberships">
     <TABLE-PATH syntax="XPATH">/SecTest/Users/User/DirectRoleMemberships/Role</TABLE-PATH>
-    <COLUMN name="userRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Users/User/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
-    </COLUMN>
-    <COLUMN name="userName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Users/User/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Users/User</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
     <COLUMN name="parentRoleRepoName">
       <PATH syntax="XPATH">/SecTest/Users/User/DirectRoleMemberships/Role/@repository</PATH>
@@ -311,18 +260,10 @@ limitations under the License.
   </TABLE>
   <TABLE name="userIndirectRoleMemberships">
     <TABLE-PATH syntax="XPATH">/SecTest/Users/User/IndirectRoleMemberships/Role</TABLE-PATH>
-    <COLUMN name="userRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Users/User/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
-    </COLUMN>
-    <COLUMN name="userName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Users/User/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Users/User</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
     <COLUMN name="parentRoleRepoName">
       <PATH syntax="XPATH">/SecTest/Users/User/IndirectRoleMemberships/Role/@repository</PATH>
@@ -345,18 +286,10 @@ limitations under the License.
   </TABLE>
   <TABLE name="userRoleMemberships">
     <TABLE-PATH syntax="XPATH">/SecTest/Users/User/RoleMemberships/Role</TABLE-PATH>
-    <COLUMN name="userRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Users/User/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
-    </COLUMN>
-    <COLUMN name="userName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Users/User/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Users/User</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
     <COLUMN name="parentRoleRepoName">
       <PATH syntax="XPATH">/SecTest/Users/User/RoleMemberships/Role/@repository</PATH>
@@ -379,30 +312,22 @@ limitations under the License.
   </TABLE>
   <TABLE name="userCapabilities">
     <TABLE-PATH syntax="XPATH">/SecTest/Users/User/Capabilities/Capability</TABLE-PATH>
-    <COLUMN name="userRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Users/User/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
-    </COLUMN>
-    <COLUMN name="userName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Users/User/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-    </COLUMN>
-    <COLUMN name="capabilityName">
-      <PATH syntax="XPATH">/SecTest/Users/User/Capabilities/Capability/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Users/User</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
     <COLUMN name="folder">
       <PATH syntax="XPATH">/SecTest/Users/User/Capabilities/Capability/@parentFolder</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>2048</LENGTH>
+    </COLUMN>
+    <COLUMN name="capabilityName">
+      <PATH syntax="XPATH">/SecTest/Users/User/Capabilities/Capability/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
     </COLUMN>
     <COLUMN name="isGranted">
       <PATH syntax="XPATH">/SecTest/Users/User/Capabilities/Capability/@granted</PATH>
@@ -413,18 +338,10 @@ limitations under the License.
   </TABLE>
   <TABLE name="userAppliedACTs">
     <TABLE-PATH syntax="XPATH">/SecTest/Users/User/AccessControls/ACT</TABLE-PATH>
-    <COLUMN name="userRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Users/User/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
-    </COLUMN>
-    <COLUMN name="userName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Users/User/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Users/User</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
     <COLUMN name="appliedACTRepoName">
       <PATH syntax="XPATH">/SecTest/Users/User/AccessControls/ACT/@repository</PATH>
@@ -442,27 +359,26 @@ limitations under the License.
   </TABLE>
   <TABLE name="userAppliedGroupACEs">
     <TABLE-PATH syntax="XPATH">/SecTest/Users/User/AccessControls/Group</TABLE-PATH>
-    <COLUMN name="userRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Users/User/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Users/User</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
-    <COLUMN name="userName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Users/User/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-    </COLUMN>
-    <COLUMN name="aceGroupRepoName">
+    <COLUMN name="aceIdentityRepoName">
       <PATH syntax="XPATH">/SecTest/Users/User/AccessControls/Group/@repository</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
       <DEFAULT>Foundation</DEFAULT>
     </COLUMN>
-    <COLUMN name="aceGroupName">
+    <COLUMN name="aceIdentityPublicType">
+      <PATH syntax="XPATH">/SecTest/Users/User/AccessControls/Group/@publicType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>UserGroup</DEFAULT>
+    </COLUMN>
+    <COLUMN name="aceIdentityName">
       <PATH syntax="XPATH">/SecTest/Users/User/AccessControls/Group/@name</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
@@ -477,27 +393,26 @@ limitations under the License.
   </TABLE>
   <TABLE name="userAppliedUserACEs">
     <TABLE-PATH syntax="XPATH">/SecTest/Users/User/AccessControls/User</TABLE-PATH>
-    <COLUMN name="userRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Users/User/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Users/User</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
-    <COLUMN name="userName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Users/User/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-    </COLUMN>
-    <COLUMN name="aceUserRepoName">
+    <COLUMN name="aceIdentityRepoName">
       <PATH syntax="XPATH">/SecTest/Users/User/AccessControls/User/@repository</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
       <DEFAULT>Foundation</DEFAULT>
     </COLUMN>
-    <COLUMN name="aceUserName">
+    <COLUMN name="aceIdentityPublicType">
+      <PATH syntax="XPATH">/SecTest/Users/User/AccessControls/User/@publicType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>User</DEFAULT>
+    </COLUMN>
+    <COLUMN name="aceIdentityName">
       <PATH syntax="XPATH">/SecTest/Users/User/AccessControls/User/@name</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>

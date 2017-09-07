@@ -29,60 +29,89 @@ limitations under the License.
 --------------------------------------------------------------------------------
 */
 
-ods listing close;
-ods html body='output/act-reviewer-sectest-data.html';
-
 filename sectest "input/act-reviewer-sectest.xml" lrecl=32767 encoding="utf-8";
 filename map "act-reviewer-sectest-map.xml" lrecl=32767 encoding="utf-8";
 libname sectest xml xmlfileref=sectest xmlmap=map access=readonly;
 
-title1 "ACTs";
-proc print data=sectest.acts;
-run;
-
-title1 "Group Permission Patterns for ACTs";
-proc print data=sectest.actGroupPermissionPatterns;
-run;
-
-title1 "User Permission Patterns for ACTs";
-proc print data=sectest.actUserPermissionPatterns;
-run;
-
-title1 "ACT Protected Objects";
-proc print data=sectest.actProtectedObjects;
-run;
-
-title1 "ACT Protected ACTs";
-proc print data=sectest.actProtectedACTs;
-run;
-
-title1 "ACT Protected Users";
-proc print data=sectest.actProtectedUsers;
-run;
-
-title1 "ACT Protected Groups";
-proc print data=sectest.actProtectedGroups;
-run;
-
-title1 "ACT Protected Roles";
-proc print data=sectest.actProtectedRoles;
-run;
-
-title1 "ACTs applied to ACTs";
-proc print data=sectest.actAppliedACTs;
-run;
-
-title1 "Group ACEs applied to ACTs";
-proc print data=sectest.actAppliedGroupACEs;
-run;
-
-title1 "User ACEs applied to ACTs";
-proc print data=sectest.actAppliedUserACEs;
-run;
+proc sql;
+create table work.acts as select * from sectest.acts;
+create table work.actAppliedACTs as
+   select m.key, m.repoName, m.name, d.appliedACTRepoName, d.appliedACTName
+   from work.acts m, sectest.actAppliedACTs d
+   where m.key = d.key
+;
+create table work.actPermissionPatterns as
+   select m.key, m.repoName, m.name, d.identityRepoName, d.identityPublicType, d.identityName, d.permissions
+   from work.acts m, sectest.actGroupPermissionPatterns d
+   where m.key = d.key
+outer union corr
+   select m.key, m.repoName, m.name, d.identityRepoName, d.identityPublicType, d.identityName, d.permissions
+   from work.acts m, sectest.actUserPermissionPatterns d
+   where m.key = d.key
+order by key, identityRepoName, identityPublicType, identityName; 
+;
+create table work.actProtectedObjects as
+   select m.key, m.repoName, m.name, d.protectedObjRepoName, d.protectedObjModelType, d.protectedObjPublicType, d.protectedObjFolder, d.protectedObjName   
+   from work.acts m, sectest.actProtectedObjects d
+   where m.key = d.key
+outer union corr
+   select m.key, m.repoName, m.name, d.protectedObjRepoName, d.protectedObjModelType, d.protectedObjPublicType, d.protectedObjFolder, d.protectedObjName   
+   from work.acts m, sectest.actProtectedACTs d
+   where m.key = d.key
+outer union corr
+   select m.key, m.repoName, m.name, d.protectedObjRepoName, d.protectedObjModelType, d.protectedObjPublicType, d.protectedObjFolder, d.protectedObjName   
+   from work.acts m, sectest.actProtectedUsers d
+   where m.key = d.key
+outer union corr
+   select m.key, m.repoName, m.name, d.protectedObjRepoName, d.protectedObjModelType, d.protectedObjPublicType, d.protectedObjFolder, d.protectedObjName   
+   from work.acts m, sectest.actProtectedGroups d
+   where m.key = d.key
+outer union corr
+   select m.key, m.repoName, m.name, d.protectedObjRepoName, d.protectedObjModelType, d.protectedObjPublicType, d.protectedObjFolder, d.protectedObjName   
+   from work.acts m, sectest.actProtectedRoles d
+   where m.key = d.key
+order by key, protectedObjFolder, protectedObjName 
+;
+create table work.actAppliedACEs as
+   select m.key, m.repoName, m.name, d.aceIdentityRepoName, d.aceIdentityPublicType, d.aceIdentityName, d.acePermissions
+   from work.acts m, sectest.actAppliedGroupACEs d
+   where m.key = d.key
+outer union corr
+   select m.key, m.repoName, m.name, d.aceIdentityRepoName, d.aceIdentityPublicType, d.aceIdentityName, d.acePermissions
+   from work.acts m, sectest.actAppliedUserACEs d
+   where m.key = d.key
+order by key, aceIdentityRepoName, aceIdentityPublicType, aceIdentityName; 
+;
+quit; 
 
 libname sectest;
 filename map;
 filename sectest;
+
+* -----------------------------------------------------------------------------;
+
+ods listing close;
+ods html body='output/act-reviewer-sectest-data.html';
+
+title1 "ACTs";
+proc print data=work.acts;
+run;
+
+title1 "Permission Patterns for ACTs";
+proc print data=work.actPermissionPatterns;
+run;
+
+title1 "ACT Protected Objects";
+proc print data=work.actProtectedObjects;
+run;
+
+title1 "ACTs applied to ACTs";
+proc print data=work.actAppliedACTs;
+run;
+
+title1 "ACEs applied to ACTs";
+proc print data=work.actAppliedACEs;
+run;
 
 ods html close;
 ods listing;

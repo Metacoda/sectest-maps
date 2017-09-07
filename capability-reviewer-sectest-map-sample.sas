@@ -36,36 +36,36 @@ libname sectest xml xmlfileref=sectest xmlmap=map access=readonly;
 proc sql;
 create table work.capabilities as select * from sectest.capabilities;
 create table work.capabilityDirectMembers as
-   select c.*, m.memberIdentityRepoName, m.memberIdentityPublicType, m.memberIdentityName 
-   from work.capabilities c, sectest.capabilityDirectRoleMembers m
-   where c.key = m.key
+   select m.key, m.repoName, m.folder, m.name, d.memberIdentityRepoName, d.memberIdentityPublicType, d.memberIdentityName 
+   from work.capabilities m, sectest.capabilityDirectRoleMembers d
+   where m.key = d.key
 ;
 create table work.capabilityIndirectMembers as
-   select c.*, m.memberIdentityRepoName, m.memberIdentityPublicType, m.memberIdentityName, m.level 
-   from work.capabilities c, sectest.capabilityIndirectRoleMembers m
-   where c.key = m.key
+   select m.key, m.repoName, m.folder, m.name, d.memberIdentityRepoName, d.memberIdentityPublicType, d.memberIdentityName, d.level 
+   from work.capabilities m, sectest.capabilityIndirectRoleMembers d
+   where m.key = d.key
 outer union corr
-   select c.*, m.memberIdentityRepoName, m.memberIdentityPublicType, m.memberIdentityName, m.level 
-   from work.capabilities c, sectest.capabilityIndirectGroupMembers m
-   where c.key = m.key
+   select m.key, m.repoName, m.folder, m.name, d.memberIdentityRepoName, d.memberIdentityPublicType, d.memberIdentityName, d.level 
+   from work.capabilities m, sectest.capabilityIndirectGroupMembers d
+   where m.key = d.key
 outer union corr
-   select c.*, m.memberIdentityRepoName, m.memberIdentityPublicType, m.memberIdentityName, m.level 
-   from work.capabilities c, sectest.capabilityIndirectUserMembers m
-   where c.key = m.key
+   select m.key, m.repoName, m.folder, m.name, d.memberIdentityRepoName, d.memberIdentityPublicType, d.memberIdentityName, d.level 
+   from work.capabilities m, sectest.capabilityIndirectUserMembers d
+   where m.key = d.key
 order by key, level, memberIdentityRepoName, memberIdentityPublicType, memberIdentityName; 
 ;
 create table work.capabilityMembers as
-   select c.*, m.memberIdentityRepoName, m.memberIdentityPublicType, m.memberIdentityName, m.level 
-   from work.capabilities c, sectest.capabilityRoleMembers m
-   where c.key = m.key
+   select m.key, m.repoName, m.folder, m.name, d.memberIdentityRepoName, d.memberIdentityPublicType, d.memberIdentityName, d.level 
+   from work.capabilities m, sectest.capabilityRoleMembers d
+   where m.key = d.key
 outer union corr
-   select c.*, m.memberIdentityRepoName, m.memberIdentityPublicType, m.memberIdentityName, m.level 
-   from work.capabilities c, sectest.capabilityGroupMembers m
-   where c.key = m.key
+   select m.key, m.repoName, m.folder, m.name, d.memberIdentityRepoName, d.memberIdentityPublicType, d.memberIdentityName, d.level 
+   from work.capabilities m, sectest.capabilityGroupMembers d
+   where m.key = d.key
 outer union corr
-   select c.*, m.memberIdentityRepoName, m.memberIdentityPublicType, m.memberIdentityName, m.level 
-   from work.capabilities c, sectest.capabilityUserMembers m
-   where c.key = m.key
+   select m.key, m.repoName, m.folder, m.name, d.memberIdentityRepoName, d.memberIdentityPublicType, d.memberIdentityName, d.level 
+   from work.capabilities m, sectest.capabilityUserMembers d
+   where m.key = d.key
 order by key, level, memberIdentityRepoName, memberIdentityPublicType, memberIdentityName; 
 ;
 quit; 
@@ -85,17 +85,17 @@ run;
 
 %let capabilityName=Save;
 
-title1 "Direct Members granted '&capabilityName' Capability";
+title1 "Direct (Role) Members granted Capability: &capabilityName";
 proc print data=work.capabilityDirectMembers;
 where name="&capabilityName";
 run;
 
-title1 "Indirect Members granted '&capabilityName' Capability";
+title1 "Indirect Members granted Capability: &capabilityName";
 proc print data=work.capabilityIndirectMembers;
 where name="&capabilityName";
 run;
 
-title1 "Members (direct+indirect) granted 'Save' Capability";
+title1 "Members (direct+indirect) granted Capability: &capabilityName";
 proc print data=work.capabilityMembers(obs=1000);
 where name="&capabilityName";
 run;

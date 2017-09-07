@@ -28,9 +28,14 @@ limitations under the License.
 
 ***********************************************************************
 -->
-<SXLEMAP version="1.2" name="metacodaRoleReviewerSecTestMap">
+<SXLEMAP version="1.2">
   <TABLE name="roles">
     <TABLE-PATH syntax="XPATH">/SecTest/Roles/Role</TABLE-PATH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Roles/Role</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
     <COLUMN name="repoName">
       <PATH syntax="XPATH">/SecTest/Roles/Role/@repository</PATH>
       <TYPE>character</TYPE>
@@ -71,27 +76,26 @@ limitations under the License.
   </TABLE>
   <TABLE name="roleDirectGroupMembers">
     <TABLE-PATH syntax="XPATH">/SecTest/Roles/Role/DirectMembers/Group</TABLE-PATH>
-    <COLUMN name="roleRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Roles/Role</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
-    <COLUMN name="roleName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-    </COLUMN>
-    <COLUMN name="memberGroupRepoName">
+    <COLUMN name="memberIdentityRepoName">
       <PATH syntax="XPATH">/SecTest/Roles/Role/DirectMembers/Group/@repository</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
       <DEFAULT>Foundation</DEFAULT>
     </COLUMN>
-    <COLUMN name="memberGroupName">
+    <COLUMN name="memberIdentityPublicType">
+      <PATH syntax="XPATH">/SecTest/Roles/Role/DirectMembers/Group/@publicType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>UserGroup</DEFAULT>
+    </COLUMN>
+    <COLUMN name="memberIdentityName">
       <PATH syntax="XPATH">/SecTest/Roles/Role/DirectMembers/Group/@name</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
@@ -100,27 +104,26 @@ limitations under the License.
   </TABLE>
   <TABLE name="roleDirectUserMembers">
     <TABLE-PATH syntax="XPATH">/SecTest/Roles/Role/DirectMembers/User</TABLE-PATH>
-    <COLUMN name="roleRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Roles/Role</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
-    <COLUMN name="roleName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-    </COLUMN>
-    <COLUMN name="memberUserRepoName">
+    <COLUMN name="memberIdentityRepoName">
       <PATH syntax="XPATH">/SecTest/Roles/Role/DirectMembers/User/@repository</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
       <DEFAULT>Foundation</DEFAULT>
     </COLUMN>
-    <COLUMN name="memberUserName">
+    <COLUMN name="memberIdentityPublicType">
+      <PATH syntax="XPATH">/SecTest/Roles/Role/DirectMembers/User/@publicType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>User</DEFAULT>
+    </COLUMN>
+    <COLUMN name="memberIdentityName">
       <PATH syntax="XPATH">/SecTest/Roles/Role/DirectMembers/User/@name</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
@@ -129,27 +132,26 @@ limitations under the License.
   </TABLE>
   <TABLE name="roleIndirectGroupMembers">
     <TABLE-PATH syntax="XPATH">/SecTest/Roles/Role/IndirectMembers/Group</TABLE-PATH>
-    <COLUMN name="roleRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Roles/Role</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
-    <COLUMN name="roleName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-    </COLUMN>
-    <COLUMN name="memberGroupRepoName">
+    <COLUMN name="memberIdentityRepoName">
       <PATH syntax="XPATH">/SecTest/Roles/Role/IndirectMembers/Group/@repository</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
       <DEFAULT>Foundation</DEFAULT>
     </COLUMN>
-    <COLUMN name="memberGroupName">
+    <COLUMN name="memberIdentityPublicType">
+      <PATH syntax="XPATH">/SecTest/Roles/Role/IndirectMembers/Group/@publicType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>UserGroup</DEFAULT>
+    </COLUMN>
+    <COLUMN name="memberIdentityName">
       <PATH syntax="XPATH">/SecTest/Roles/Role/IndirectMembers/Group/@name</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
@@ -163,27 +165,26 @@ limitations under the License.
   </TABLE>
   <TABLE name="roleIndirectUserMembers">
     <TABLE-PATH syntax="XPATH">/SecTest/Roles/Role/IndirectMembers/User</TABLE-PATH>
-    <COLUMN name="roleRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Roles/Role</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
-    <COLUMN name="roleName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-    </COLUMN>
-    <COLUMN name="memberUserRepoName">
+    <COLUMN name="memberIdentityRepoName">
       <PATH syntax="XPATH">/SecTest/Roles/Role/IndirectMembers/User/@repository</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
       <DEFAULT>Foundation</DEFAULT>
     </COLUMN>
-    <COLUMN name="memberUserName">
+    <COLUMN name="memberIdentityPublicType">
+      <PATH syntax="XPATH">/SecTest/Roles/Role/IndirectMembers/User/@publicType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>User</DEFAULT>
+    </COLUMN>
+    <COLUMN name="memberIdentityName">
       <PATH syntax="XPATH">/SecTest/Roles/Role/IndirectMembers/User/@name</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
@@ -197,27 +198,26 @@ limitations under the License.
   </TABLE>
   <TABLE name="roleGroupMembers">
     <TABLE-PATH syntax="XPATH">/SecTest/Roles/Role/Members/Group</TABLE-PATH>
-    <COLUMN name="roleRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Roles/Role</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
-    <COLUMN name="roleName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-    </COLUMN>
-    <COLUMN name="memberGroupRepoName">
+    <COLUMN name="memberIdentityRepoName">
       <PATH syntax="XPATH">/SecTest/Roles/Role/Members/Group/@repository</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
       <DEFAULT>Foundation</DEFAULT>
     </COLUMN>
-    <COLUMN name="memberGroupName">
+    <COLUMN name="memberIdentityPublicType">
+      <PATH syntax="XPATH">/SecTest/Roles/Role/Members/Group/@publicType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>UserGroup</DEFAULT>
+    </COLUMN>
+    <COLUMN name="memberIdentityName">
       <PATH syntax="XPATH">/SecTest/Roles/Role/Members/Group/@name</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
@@ -231,27 +231,26 @@ limitations under the License.
   </TABLE>
   <TABLE name="roleUserMembers">
     <TABLE-PATH syntax="XPATH">/SecTest/Roles/Role/Members/User</TABLE-PATH>
-    <COLUMN name="roleRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Roles/Role</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
-    <COLUMN name="roleName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-    </COLUMN>
-    <COLUMN name="memberUserRepoName">
+    <COLUMN name="memberIdentityRepoName">
       <PATH syntax="XPATH">/SecTest/Roles/Role/Members/User/@repository</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
       <DEFAULT>Foundation</DEFAULT>
     </COLUMN>
-    <COLUMN name="memberUserName">
+    <COLUMN name="memberIdentityPublicType">
+      <PATH syntax="XPATH">/SecTest/Roles/Role/Members/User/@publicType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>User</DEFAULT>
+    </COLUMN>
+    <COLUMN name="memberIdentityName">
       <PATH syntax="XPATH">/SecTest/Roles/Role/Members/User/@name</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
@@ -265,18 +264,10 @@ limitations under the License.
   </TABLE>
   <TABLE name="roleDirectContributions">
     <TABLE-PATH syntax="XPATH">/SecTest/Roles/Role/DirectRoleContributions/Role</TABLE-PATH>
-    <COLUMN name="roleRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
-    </COLUMN>
-    <COLUMN name="roleName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Roles/Role</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
     <COLUMN name="targetRoleRepoName">
       <PATH syntax="XPATH">/SecTest/Roles/Role/DirectRoleContributions/Role/@repository</PATH>
@@ -294,18 +285,10 @@ limitations under the License.
   </TABLE>
   <TABLE name="roleIndirectContributions">
     <TABLE-PATH syntax="XPATH">/SecTest/Roles/Role/IndirectRoleContributions/Role</TABLE-PATH>
-    <COLUMN name="roleRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
-    </COLUMN>
-    <COLUMN name="roleName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Roles/Role</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
     <COLUMN name="targetRoleRepoName">
       <PATH syntax="XPATH">/SecTest/Roles/Role/IndirectRoleContributions/Role/@repository</PATH>
@@ -328,18 +311,10 @@ limitations under the License.
   </TABLE>
   <TABLE name="roleContributions">
     <TABLE-PATH syntax="XPATH">/SecTest/Roles/Role/RoleContributions/Role</TABLE-PATH>
-    <COLUMN name="roleRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
-    </COLUMN>
-    <COLUMN name="roleName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Roles/Role</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
     <COLUMN name="targetRoleRepoName">
       <PATH syntax="XPATH">/SecTest/Roles/Role/RoleContributions/Role/@repository</PATH>
@@ -362,18 +337,10 @@ limitations under the License.
   </TABLE>
   <TABLE name="roleDirectContributingRoles">
     <TABLE-PATH syntax="XPATH">/SecTest/Roles/Role/DirectContributingRoles/Role</TABLE-PATH>
-    <COLUMN name="roleRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
-    </COLUMN>
-    <COLUMN name="roleName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Roles/Role</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
     <COLUMN name="sourceRoleRepoName">
       <PATH syntax="XPATH">/SecTest/Roles/Role/DirectContributingRoles/Role/@repository</PATH>
@@ -391,18 +358,10 @@ limitations under the License.
   </TABLE>
   <TABLE name="roleIndirectContributingRoles">
     <TABLE-PATH syntax="XPATH">/SecTest/Roles/Role/IndirectContributingRoles/Role</TABLE-PATH>
-    <COLUMN name="roleRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
-    </COLUMN>
-    <COLUMN name="roleName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Roles/Role</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
     <COLUMN name="sourceRoleRepoName">
       <PATH syntax="XPATH">/SecTest/Roles/Role/IndirectContributingRoles/Role/@repository</PATH>
@@ -425,18 +384,10 @@ limitations under the License.
   </TABLE>
   <TABLE name="roleContributingRoles">
     <TABLE-PATH syntax="XPATH">/SecTest/Roles/Role/ContributingRoles/Role</TABLE-PATH>
-    <COLUMN name="roleRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
-    </COLUMN>
-    <COLUMN name="roleName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Roles/Role</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
     <COLUMN name="sourceRoleRepoName">
       <PATH syntax="XPATH">/SecTest/Roles/Role/ContributingRoles/Role/@repository</PATH>
@@ -459,30 +410,22 @@ limitations under the License.
   </TABLE>
   <TABLE name="roleCapabilities">
     <TABLE-PATH syntax="XPATH">/SecTest/Roles/Role/Capabilities/Capability</TABLE-PATH>
-    <COLUMN name="roleRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
-    </COLUMN>
-    <COLUMN name="roleName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-    </COLUMN>
-    <COLUMN name="capabilityName">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/Capabilities/Capability/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Roles/Role</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
     <COLUMN name="folder">
       <PATH syntax="XPATH">/SecTest/Roles/Role/Capabilities/Capability/@parentFolder</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>2048</LENGTH>
+    </COLUMN>
+    <COLUMN name="capabilityName">
+      <PATH syntax="XPATH">/SecTest/Roles/Role/Capabilities/Capability/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
     </COLUMN>
     <COLUMN name="isGranted">
       <PATH syntax="XPATH">/SecTest/Roles/Role/Capabilities/Capability/@granted</PATH>
@@ -493,18 +436,10 @@ limitations under the License.
   </TABLE>
   <TABLE name="roleAppliedACTs">
     <TABLE-PATH syntax="XPATH">/SecTest/Roles/Role/AccessControls/ACT</TABLE-PATH>
-    <COLUMN name="roleRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
-    </COLUMN>
-    <COLUMN name="roleName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Roles/Role</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
     <COLUMN name="appliedACTRepoName">
       <PATH syntax="XPATH">/SecTest/Roles/Role/AccessControls/ACT/@repository</PATH>
@@ -522,27 +457,26 @@ limitations under the License.
   </TABLE>
   <TABLE name="roleAppliedGroupACEs">
     <TABLE-PATH syntax="XPATH">/SecTest/Roles/Role/AccessControls/Group</TABLE-PATH>
-    <COLUMN name="roleRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Roles/Role</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
-    <COLUMN name="roleName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-    </COLUMN>
-    <COLUMN name="aceGroupRepoName">
+    <COLUMN name="aceIdentityRepoName">
       <PATH syntax="XPATH">/SecTest/Roles/Role/AccessControls/Group/@repository</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
       <DEFAULT>Foundation</DEFAULT>
     </COLUMN>
-    <COLUMN name="aceGroupName">
+    <COLUMN name="aceIdentityPublicType">
+      <PATH syntax="XPATH">/SecTest/Roles/Role/AccessControls/Group/@publicType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>UserGroup</DEFAULT>
+    </COLUMN>
+    <COLUMN name="aceIdentityName">
       <PATH syntax="XPATH">/SecTest/Roles/Role/AccessControls/Group/@name</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
@@ -557,27 +491,26 @@ limitations under the License.
   </TABLE>
   <TABLE name="roleAppliedUserACEs">
     <TABLE-PATH syntax="XPATH">/SecTest/Roles/Role/AccessControls/User</TABLE-PATH>
-    <COLUMN name="roleRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Roles/Role</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
-    <COLUMN name="roleName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/Roles/Role/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-    </COLUMN>
-    <COLUMN name="aceUserRepoName">
+    <COLUMN name="aceIdentityRepoName">
       <PATH syntax="XPATH">/SecTest/Roles/Role/AccessControls/User/@repository</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
       <DEFAULT>Foundation</DEFAULT>
     </COLUMN>
-    <COLUMN name="aceUserName">
+    <COLUMN name="aceIdentityPublicType">
+      <PATH syntax="XPATH">/SecTest/Roles/Role/AccessControls/User/@publicType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>User</DEFAULT>
+    </COLUMN>
+    <COLUMN name="aceIdentityName">
       <PATH syntax="XPATH">/SecTest/Roles/Role/AccessControls/User/@name</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>

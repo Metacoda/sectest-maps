@@ -28,9 +28,14 @@ limitations under the License.
 
 ***********************************************************************
 -->
-<SXLEMAP version="1.2" name="metacodaACTReviewerSecTestMap">
+<SXLEMAP version="1.2">
   <TABLE name="acts">
     <TABLE-PATH syntax="XPATH">/SecTest/ACTs/ACT</TABLE-PATH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/ACTs/ACT</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
     <COLUMN name="repoName">
       <PATH syntax="XPATH">/SecTest/ACTs/ACT/@repository</PATH>
       <TYPE>character</TYPE>
@@ -83,27 +88,26 @@ limitations under the License.
   </TABLE>
   <TABLE name="actGroupPermissionPatterns">
     <TABLE-PATH syntax="XPATH">/SecTest/ACTs/ACT/PermissionPattern/Group</TABLE-PATH>
-    <COLUMN name="actRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/ACTs/ACT/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/ACTs/ACT</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
-    <COLUMN name="actName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/ACTs/ACT/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-    </COLUMN>
-    <COLUMN name="groupRepoName">
+    <COLUMN name="identityRepoName">
       <PATH syntax="XPATH">/SecTest/ACTs/ACT/PermissionPattern/Group/@repository</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
       <DEFAULT>Foundation</DEFAULT>
     </COLUMN>
-    <COLUMN name="groupName">
+    <COLUMN name="identityPublicType">
+      <PATH syntax="XPATH">/SecTest/ACTs/ACT/PermissionPattern/Group/@publicType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>UserGroup</DEFAULT>
+    </COLUMN>
+    <COLUMN name="identityName">
       <PATH syntax="XPATH">/SecTest/ACTs/ACT/PermissionPattern/Group/@name</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
@@ -118,27 +122,26 @@ limitations under the License.
   </TABLE>
   <TABLE name="actUserPermissionPatterns">
     <TABLE-PATH syntax="XPATH">/SecTest/ACTs/ACT/PermissionPattern/User</TABLE-PATH>
-    <COLUMN name="actRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/ACTs/ACT/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/ACTs/ACT</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
-    <COLUMN name="actName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/ACTs/ACT/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-    </COLUMN>
-    <COLUMN name="userRepoName">
+    <COLUMN name="identityRepoName">
       <PATH syntax="XPATH">/SecTest/ACTs/ACT/PermissionPattern/User/@repository</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
       <DEFAULT>Foundation</DEFAULT>
     </COLUMN>
-    <COLUMN name="userName">
+    <COLUMN name="identityPublicType">
+      <PATH syntax="XPATH">/SecTest/ACTs/ACT/PermissionPattern/User/@publicType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>User</DEFAULT>
+    </COLUMN>
+    <COLUMN name="identityName">
       <PATH syntax="XPATH">/SecTest/ACTs/ACT/PermissionPattern/User/@name</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
@@ -153,18 +156,10 @@ limitations under the License.
   </TABLE>
   <TABLE name="actProtectedObjects">
     <TABLE-PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/Object</TABLE-PATH>
-    <COLUMN name="actRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/ACTs/ACT/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
-    </COLUMN>
-    <COLUMN name="actName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/ACTs/ACT/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/ACTs/ACT</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
     <COLUMN name="protectedObjRepoName">
       <PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/Object/@repository</PATH>
@@ -172,18 +167,6 @@ limitations under the License.
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
       <DEFAULT>Foundation</DEFAULT>
-    </COLUMN>
-    <COLUMN name="protectedObjFolder">
-      <PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/Object/@parentFolder</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>2048</LENGTH>
-    </COLUMN>
-    <COLUMN name="protectedObjName">
-      <PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/Object/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
     </COLUMN>
     <COLUMN name="protectedObjModelType">
       <PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/Object/@modelType</PATH>
@@ -197,30 +180,54 @@ limitations under the License.
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
     </COLUMN>
+    <COLUMN name="protectedObjFolder">
+      <PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/Object/@parentFolder</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>2048</LENGTH>
+    </COLUMN>
+    <COLUMN name="protectedObjName">
+      <PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/Object/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
   </TABLE>
   <TABLE name="actProtectedACTs">
     <TABLE-PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/ACT</TABLE-PATH>
-    <COLUMN name="actRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/ACTs/ACT/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/ACTs/ACT</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
-    <COLUMN name="actName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/ACTs/ACT/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-    </COLUMN>
-    <COLUMN name="protectedACTRepoName">
+    <COLUMN name="protectedObjRepoName">
       <PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/ACT/@repository</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
       <DEFAULT>Foundation</DEFAULT>
     </COLUMN>
-    <COLUMN name="protectedACTName">
+    <COLUMN name="protectedObjModelType">
+      <PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/ACT/@modelType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>AccessControlTemplate</DEFAULT>
+    </COLUMN>
+    <COLUMN name="protectedObjPublicType">
+      <PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/ACT/@publicType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>ACT</DEFAULT>
+    </COLUMN>
+    <COLUMN name="protectedObjFolder">
+      <PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/ACT/@parentFolder</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>2048</LENGTH>
+    </COLUMN>
+    <COLUMN name="protectedObjName">
       <PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/ACT/@name</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
@@ -229,27 +236,39 @@ limitations under the License.
   </TABLE>
   <TABLE name="actProtectedUsers">
     <TABLE-PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/User</TABLE-PATH>
-    <COLUMN name="actRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/ACTs/ACT/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/ACTs/ACT</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
-    <COLUMN name="actName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/ACTs/ACT/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-    </COLUMN>
-    <COLUMN name="protectedUserRepoName">
+    <COLUMN name="protectedObjRepoName">
       <PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/User/@repository</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
       <DEFAULT>Foundation</DEFAULT>
     </COLUMN>
-    <COLUMN name="protectedUserName">
+    <COLUMN name="protectedObjModelType">
+      <PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/User/@modelType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Person</DEFAULT>
+    </COLUMN>
+    <COLUMN name="protectedObjPublicType">
+      <PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/User/@publicType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>User</DEFAULT>
+    </COLUMN>
+    <COLUMN name="protectedObjFolder">
+      <PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/User/@parentFolder</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>2048</LENGTH>
+    </COLUMN>
+    <COLUMN name="protectedObjName">
       <PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/User/@name</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
@@ -258,27 +277,39 @@ limitations under the License.
   </TABLE>
   <TABLE name="actProtectedGroups">
     <TABLE-PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/Group</TABLE-PATH>
-    <COLUMN name="actRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/ACTs/ACT/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/ACTs/ACT</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
-    <COLUMN name="actName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/ACTs/ACT/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-    </COLUMN>
-    <COLUMN name="protectedGroupRepoName">
+    <COLUMN name="protectedObjRepoName">
       <PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/Group/@repository</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
       <DEFAULT>Foundation</DEFAULT>
     </COLUMN>
-    <COLUMN name="protectedGroupName">
+    <COLUMN name="protectedObjModelType">
+      <PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/Group/@modelType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>IdentityGroup</DEFAULT>
+    </COLUMN>
+    <COLUMN name="protectedObjPublicType">
+      <PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/Group/@publicType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>UserGroup</DEFAULT>
+    </COLUMN>
+    <COLUMN name="protectedObjFolder">
+      <PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/Group/@parentFolder</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>2048</LENGTH>
+    </COLUMN>
+    <COLUMN name="protectedObjName">
       <PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/Group/@name</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
@@ -287,27 +318,39 @@ limitations under the License.
   </TABLE>
   <TABLE name="actProtectedRoles">
     <TABLE-PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/Role</TABLE-PATH>
-    <COLUMN name="actRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/ACTs/ACT/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/ACTs/ACT</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
-    <COLUMN name="actName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/ACTs/ACT/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-    </COLUMN>
-    <COLUMN name="protectedRoleRepoName">
+    <COLUMN name="protectedObjRepoName">
       <PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/Role/@repository</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
       <DEFAULT>Foundation</DEFAULT>
     </COLUMN>
-    <COLUMN name="protectedRoleName">
+    <COLUMN name="protectedObjModelType">
+      <PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/Role/@modelType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>IdentityGroup</DEFAULT>
+    </COLUMN>
+    <COLUMN name="protectedObjPublicType">
+      <PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/Role/@publicType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Role</DEFAULT>
+    </COLUMN>
+    <COLUMN name="protectedObjFolder">
+      <PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/Role/@parentFolder</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>2048</LENGTH>
+    </COLUMN>
+    <COLUMN name="protectedObjName">
       <PATH syntax="XPATH">/SecTest/ACTs/ACT/Objects/Role/@name</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
@@ -316,18 +359,10 @@ limitations under the License.
   </TABLE>
   <TABLE name="actAppliedACTs">
     <TABLE-PATH syntax="XPATH">/SecTest/ACTs/ACT/AccessControls/ACT</TABLE-PATH>
-    <COLUMN name="actRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/ACTs/ACT/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
-    </COLUMN>
-    <COLUMN name="actName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/ACTs/ACT/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/ACTs/ACT</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
     <COLUMN name="appliedACTRepoName">
       <PATH syntax="XPATH">/SecTest/ACTs/ACT/AccessControls/ACT/@repository</PATH>
@@ -345,27 +380,26 @@ limitations under the License.
   </TABLE>
   <TABLE name="actAppliedGroupACEs">
     <TABLE-PATH syntax="XPATH">/SecTest/ACTs/ACT/AccessControls/Group</TABLE-PATH>
-    <COLUMN name="actRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/ACTs/ACT/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/ACTs/ACT</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
-    <COLUMN name="actName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/ACTs/ACT/@name</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-    </COLUMN>
-    <COLUMN name="aceGroupRepoName">
+    <COLUMN name="aceIdentityRepoName">
       <PATH syntax="XPATH">/SecTest/ACTs/ACT/AccessControls/Group/@repository</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
       <DEFAULT>Foundation</DEFAULT>
     </COLUMN>
-    <COLUMN name="aceGroupName">
+    <COLUMN name="aceIdentityPublicType">
+      <PATH syntax="XPATH">/SecTest/ACTs/ACT/AccessControls/Group/@publicType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>UserGroup</DEFAULT>
+    </COLUMN>
+    <COLUMN name="aceIdentityName">
       <PATH syntax="XPATH">/SecTest/ACTs/ACT/AccessControls/Group/@name</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
@@ -380,12 +414,10 @@ limitations under the License.
   </TABLE>
   <TABLE name="actAppliedUserACEs">
     <TABLE-PATH syntax="XPATH">/SecTest/ACTs/ACT/AccessControls/User</TABLE-PATH>
-    <COLUMN name="actRepoName" retain="YES">
-      <PATH syntax="XPATH">/SecTest/ACTs/ACT/@repository</PATH>
-      <TYPE>character</TYPE>
-      <DATATYPE>string</DATATYPE>
-      <LENGTH>240</LENGTH>
-      <DEFAULT>Foundation</DEFAULT>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/ACTs/ACT</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
     </COLUMN>
     <COLUMN name="actName" retain="YES">
       <PATH syntax="XPATH">/SecTest/ACTs/ACT/@name</PATH>
@@ -393,14 +425,21 @@ limitations under the License.
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
     </COLUMN>
-    <COLUMN name="aceUserRepoName">
+    <COLUMN name="aceIdentityRepoName">
       <PATH syntax="XPATH">/SecTest/ACTs/ACT/AccessControls/User/@repository</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
       <DEFAULT>Foundation</DEFAULT>
     </COLUMN>
-    <COLUMN name="aceUserName">
+    <COLUMN name="aceIdentityPublicType">
+      <PATH syntax="XPATH">/SecTest/ACTs/ACT/AccessControls/User/@publicType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>User</DEFAULT>
+    </COLUMN>
+    <COLUMN name="aceIdentityName">
       <PATH syntax="XPATH">/SecTest/ACTs/ACT/AccessControls/User/@name</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>

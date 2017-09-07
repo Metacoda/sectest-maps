@@ -36,18 +36,18 @@ libname sectest xml xmlfileref=sectest xmlmap=map access=readonly;
 proc sql;
 create table work.protectedObjs as select * from sectest.protectedObjs;
 create table work.protectedObjAppliedACTs as
-   select p.*, a.appliedACTRepoName, a.appliedACTName
-   from work.protectedObjs p, sectest.protectedObjAppliedACTs a
-   where p.key = a.key
+   select m.*, d.appliedACTRepoName, d.appliedACTName
+   from work.protectedObjs m, sectest.protectedObjAppliedACTs d
+   where m.key = d.key
 ;
 create table work.protectedObjAppliedACEs as
-   select p.*, a.aceIdentityRepoName, a.aceIdentityPublicType, a.aceIdentityName, a.acePermissions
-   from work.protectedObjs p, sectest.protectedObjAppliedGroupACEs a
-   where p.key = a.key
+   select m.*, d.aceIdentityRepoName, d.aceIdentityPublicType, d.aceIdentityName, d.acePermissions
+   from work.protectedObjs m, sectest.protectedObjAppliedGroupACEs d
+   where m.key = d.key
 outer union corr
-   select p.*, a.aceIdentityRepoName, a.aceIdentityPublicType, a.aceIdentityName, a.acePermissions
-   from work.protectedObjs p, sectest.protectedObjAppliedUserACEs a
-   where p.key = a.key
+   select m.*, d.aceIdentityRepoName, d.aceIdentityPublicType, d.aceIdentityName, d.acePermissions
+   from work.protectedObjs m, sectest.protectedObjAppliedUserACEs d
+   where m.key = d.key
 order by key, aceIdentityRepoName, aceIdentityPublicType, aceIdentityName; 
 ;
 quit; 
