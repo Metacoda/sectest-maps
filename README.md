@@ -27,11 +27,11 @@ select the Export Metadata Security Test XML... menu item. In the export wizard 
 items you need in the export file, specify where you want the XML file to be saved and export
 the file.
 
-Choose the XML map that corresponds the the chosen Reviewer e.g. metacoda-user-reviewer-sectest.xml
+Choose the XML map that corresponds the the chosen Reviewer e.g. user-reviewer-sectest.xml
 and use the map with a SAS XML libname statement like so:
 
-    filename sectest "input/metacoda-user-reviewer-sectest.xml" lrecl=32767 encoding="utf-8";
-    filename map "metacoda-user-reviewer-sectest-map.xml" lrecl=32767 encoding="utf-8";
+    filename sectest "input/user-reviewer-sectest.xml" lrecl=32767 encoding="utf-8";
+    filename map "user-reviewer-sectest-map.xml" lrecl=32767 encoding="utf-8";
     libname sectest xml xmlfileref=sectest xmlmap=map access=readonly;
 
     title1 "Users";

@@ -1,11 +1,11 @@
 /*
 --------------------------------------------------------------------------------
 
-Sample: metacoda-user-reviewer-sectest-map-sample.sas
+Sample: user-reviewer-sectest-map-sample.sas
 
 Purpose:
 
-Demonstrates the use of metacoda-user-reviewer-sectest-map.xml
+Demonstrates the use of user-reviewer-sectest-map.xml
 
 Authors:
 * Paul Homes <paul.homes@metacoda.com>
@@ -30,10 +30,10 @@ limitations under the License.
 */
 
 ods listing close;
-ods html body='output/metacoda-user-reviewer-sectest-data.html';
+ods html body='output/user-reviewer-sectest-data.html';
 
-filename sectest "input/metacoda-user-reviewer-sectest.xml" lrecl=32767 encoding="utf-8";
-filename map "metacoda-user-reviewer-sectest-map.xml" lrecl=32767 encoding="utf-8";
+filename sectest "input/user-reviewer-sectest.xml" lrecl=32767 encoding="utf-8";
+filename map "user-reviewer-sectest-map.xml" lrecl=32767 encoding="utf-8";
 libname sectest xml xmlfileref=sectest xmlmap=map access=readonly;
 
 title1 "Users";

@@ -1,11 +1,11 @@
 /*
 --------------------------------------------------------------------------------
 
-Sample: metacoda-group-reviewer-sectest-map-sample.sas
+Sample: group-reviewer-sectest-map-sample.sas
 
 Purpose:
 
-Demonstrates the use of metacoda-group-reviewer-sectest-map.xml
+Demonstrates the use of group-reviewer-sectest-map.xml
 
 Authors:
 * Paul Homes <paul.homes@metacoda.com>
@@ -30,10 +30,10 @@ limitations under the License.
 */
 
 ods listing close;
-ods html body='output/metacoda-group-reviewer-sectest-data.html';
+ods html body='output/group-reviewer-sectest-data.html';
 
-filename sectest "input/metacoda-group-reviewer-sectest.xml" lrecl=32767 encoding="utf-8";
-filename map "metacoda-group-reviewer-sectest-map.xml" lrecl=32767 encoding="utf-8";
+filename sectest "input/group-reviewer-sectest.xml" lrecl=32767 encoding="utf-8";
+filename map "group-reviewer-sectest-map.xml" lrecl=32767 encoding="utf-8";
 libname sectest xml xmlfileref=sectest xmlmap=map access=readonly;
 
 title1 "Groups";
