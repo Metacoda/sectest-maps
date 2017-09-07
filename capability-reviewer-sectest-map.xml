@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+
+Map: capability-reviewer-sectest-map.xml
+***********************************************************************
+
+A SAS XML Libname Engine map used to import a Metadata Security Test XML file
+exported from the Metacoda Security Plug-ins Capability Reviewer.
+   
+Authors:
+ * Paul Homes <paul.homes@metacoda.com>
+
+***********************************************************************
+
+Copyright 2017 Metacoda Pty Ltd
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+***********************************************************************
+-->
+<SXLEMAP version="1.2">
+  <TABLE name="capabilities">
+    <TABLE-PATH syntax="XPATH">/SecTest/Capabilities/Capability</TABLE-PATH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Capabilities/Capability</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+    <COLUMN name="repoName">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="folder">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/@parentFolder</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>2048</LENGTH>
+    </COLUMN>
+    <COLUMN name="name">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="desc">
+      <PATH syntax="XPath">/SecTest/Capabilities/Capability/@desc</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>800</LENGTH>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="capabilityDirectRoleMembers">
+    <TABLE-PATH syntax="XPATH">/SecTest/Capabilities/Capability/DirectMembers/Role</TABLE-PATH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Capabilities/Capability</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+    <COLUMN name="memberIdentityRepoName">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/DirectMembers/Role/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="memberIdentityPublicType">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/DirectMembers/Role/@publicType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Role</DEFAULT>
+    </COLUMN>
+    <COLUMN name="memberIdentityName">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/DirectMembers/Role/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="capabilityIndirectRoleMembers">
+    <TABLE-PATH syntax="XPATH">/SecTest/Capabilities/Capability/IndirectMembers/Role</TABLE-PATH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Capabilities/Capability</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+    <COLUMN name="memberIdentityRepoName">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/IndirectMembers/Role/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="memberIdentityPublicType">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/IndirectMembers/Role/@publicType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Role</DEFAULT>
+    </COLUMN>
+    <COLUMN name="memberIdentityName">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/IndirectMembers/Role/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="level">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/IndirectMembers/Role/@level</PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="capabilityIndirectGroupMembers">
+    <TABLE-PATH syntax="XPATH">/SecTest/Capabilities/Capability/IndirectMembers/Group</TABLE-PATH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Capabilities/Capability</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+    <COLUMN name="memberIdentityRepoName">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/IndirectMembers/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="memberIdentityPublicType">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/IndirectMembers/Group/@publicType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>UserGroup</DEFAULT>
+    </COLUMN>
+    <COLUMN name="memberIdentityName">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/IndirectMembers/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="level">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/IndirectMembers/Group/@level</PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="capabilityIndirectUserMembers">
+    <TABLE-PATH syntax="XPATH">/SecTest/Capabilities/Capability/IndirectMembers/User</TABLE-PATH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Capabilities/Capability</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+    <COLUMN name="memberIdentityRepoName">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/IndirectMembers/User/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="memberIdentityPublicType">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/IndirectMembers/User/@publicType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>User</DEFAULT>
+    </COLUMN>
+    <COLUMN name="memberIdentityName">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/IndirectMembers/User/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="level">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/IndirectMembers/User/@level</PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="capabilityRoleMembers">
+    <TABLE-PATH syntax="XPATH">/SecTest/Capabilities/Capability/Members/Role</TABLE-PATH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Capabilities/Capability</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+    <COLUMN name="memberIdentityRepoName">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/Members/Role/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="memberIdentityPublicType">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/Members/Role/@publicType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Role</DEFAULT>
+    </COLUMN>
+    <COLUMN name="memberIdentityName">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/Members/Role/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="level">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/Members/Role/@level</PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="capabilityGroupMembers">
+    <TABLE-PATH syntax="XPATH">/SecTest/Capabilities/Capability/Members/Group</TABLE-PATH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Capabilities/Capability</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+    <COLUMN name="memberIdentityRepoName">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/Members/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="memberIdentityPublicType">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/Members/Group/@publicType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>UserGroup</DEFAULT>
+    </COLUMN>
+    <COLUMN name="memberIdentityName">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/Members/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="level">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/Members/Group/@level</PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="capabilityUserMembers">
+    <TABLE-PATH syntax="XPATH">/SecTest/Capabilities/Capability/Members/User</TABLE-PATH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/Capabilities/Capability</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+    <COLUMN name="memberIdentityRepoName">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/Members/User/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="memberIdentityPublicType">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/Members/User/@publicType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>User</DEFAULT>
+    </COLUMN>
+    <COLUMN name="memberIdentityName">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/Members/User/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="level">
+      <PATH syntax="XPATH">/SecTest/Capabilities/Capability/Members/User/@level</PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+  </TABLE>
+</SXLEMAP>
