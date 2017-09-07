@@ -506,14 +506,14 @@ limitations under the License.
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
     </COLUMN>
-    <COLUMN name="actRepoName">
+    <COLUMN name="appliedACTRepoName">
       <PATH syntax="XPATH">/SecTest/Roles/Role/AccessControls/ACT/@repository</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
       <LENGTH>240</LENGTH>
       <DEFAULT>Foundation</DEFAULT>
     </COLUMN>
-    <COLUMN name="actName">
+    <COLUMN name="appliedACTName">
       <PATH syntax="XPATH">/SecTest/Roles/Role/AccessControls/ACT/@name</PATH>
       <TYPE>character</TYPE>
       <DATATYPE>string</DATATYPE>
