@@ -24,12 +24,12 @@ If you have Metacoda Plug-ins installed in SAS Management Console, you can expor
 
 * Launch SAS Management Console and connect to the required SAS metadata server.
 * Select the Reviewer plug-in that contains the data you need. e.g. Metacoda User Reviewer.
-* Using the tool bar button, or the context menu available by right clicking over the reviewer icon,
+* Using the toolbar button, or the context menu available by right-clicking over the reviewer icon,
   select the Export Metadata Security Test XML... menu item.
-* In the export wizard check all of the items you need in the export file, specify where you want the
+* In the export wizard check all the items you need in the export file, specify where you want the
   XML file to be saved and export the file.
 
-Choose the XML map that corresponds the the chosen Reviewer e.g. user-reviewer-sectest.xml
+Choose the XML map that corresponds the chosen Reviewer e.g. user-reviewer-sectest.xml
 and use the map with a SAS XML libname statement like so:
 
     filename sectest "input/user-reviewer-sectest.xml" lrecl=32767 encoding="utf-8";
@@ -64,7 +64,7 @@ You may find the following resources useful when reviewing this documentation, t
 
 * [Metacoda Security Plug-ins Product Page](https://www.metacoda.com/en/products/security-plug-ins/)
 * [Metacoda Security Testing Framework Product Page](https://www.metacoda.com/en/products/security-plug-ins/testing-framework/)
-* [Metacoda Plug-ins Customer Documentation](https://support.metacoda.com/docs/plugins/v6.0/)
+* [Metacoda Plug-ins Customer Documentation](https://support.metacoda.com/docs/plugins/v6.1/)
 * [SAS® 9.4 XML LIBNAME Engine: User's Guide](https://support.sas.com/documentation/cdl/en/engxml/64990/HTML/default/viewer.htm#titlepage.htm)
 
 # License
