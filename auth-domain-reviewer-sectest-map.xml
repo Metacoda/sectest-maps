@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+
+Map: auth-domain-reviewer-sectest-map.xml
+***********************************************************************
+
+A SAS XML Libname Engine map used to import a Metadata Security Test XML file
+exported from the Metacoda Security Plug-ins Auth Domain Reviewer.
+   
+Authors:
+ * Paul Homes <paul.homes@metacoda.com>
+
+***********************************************************************
+
+Copyright 2023 Metacoda Pty Ltd
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+***********************************************************************
+-->
+<SXLEMAP version="1.2">
+  <TABLE name="authDomains">
+    <TABLE-PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain</TABLE-PATH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+    <COLUMN name="repoName">
+      <PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="name">
+      <PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="desc">
+      <PATH syntax="XPath">/SecTest/AuthDomains/AuthDomain/@desc</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>800</LENGTH>
+    </COLUMN>
+    <COLUMN name="isOutboundOnly">
+      <PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/@outboundOnly</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>5</LENGTH>
+    </COLUMN>
+    <COLUMN name="isTrustedOnly">
+      <PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/@trustedOnly</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>5</LENGTH>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="authDomainLogins">
+    <TABLE-PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/Logins/Login</TABLE-PATH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+    <COLUMN name="loginUserId">
+      <PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/Logins/Login/@userId</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>512</LENGTH>
+    </COLUMN>
+    <COLUMN name="loginHasPassword">
+      <PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/Logins/Login/@hasPassword</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>5</LENGTH>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="authDomainConnections">
+    <TABLE-PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/Connections/Connection</TABLE-PATH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+    <COLUMN name="connectionRepoName">
+      <PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/Connections/Connection/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="connectionName">
+      <PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/Connections/Connection/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="authDomainLibraries">
+    <TABLE-PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/Libraries/Library</TABLE-PATH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+    <COLUMN name="libraryRepoName">
+      <PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/Libraries/Library/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="libraryParentFolder">
+      <PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/Libraries/Library/@parentFolder</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>2048</LENGTH>
+    </COLUMN>
+    <COLUMN name="libraryName">
+      <PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/Libraries/Library/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="authDomainAppliedACTs">
+    <TABLE-PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/AccessControls/ACT</TABLE-PATH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+    <COLUMN name="appliedACTRepoName">
+      <PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/AccessControls/ACT/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="appliedACTName">
+      <PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/AccessControls/ACT/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="authDomainAppliedGroupACEs">
+    <TABLE-PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/AccessControls/Group</TABLE-PATH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+    <COLUMN name="aceIdentityRepoName">
+      <PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/AccessControls/Group/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="aceIdentityPublicType">
+      <PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/AccessControls/Group/@publicType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>UserGroup</DEFAULT>
+    </COLUMN>
+    <COLUMN name="aceIdentityName">
+      <PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/AccessControls/Group/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="acePermissions">
+      <PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/AccessControls/Group/@permissions</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>512</LENGTH>
+    </COLUMN>
+  </TABLE>
+  <TABLE name="authDomainAppliedUserACEs">
+    <TABLE-PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/AccessControls/User</TABLE-PATH>
+    <COLUMN name="key" retain="YES" class="ORDINAL">
+      <INCREMENT-PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain</INCREMENT-PATH>
+      <TYPE>numeric</TYPE>
+      <DATATYPE>integer</DATATYPE>
+    </COLUMN>
+    <COLUMN name="actName" retain="YES">
+      <PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="aceIdentityRepoName">
+      <PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/AccessControls/User/@repository</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>Foundation</DEFAULT>
+    </COLUMN>
+    <COLUMN name="aceIdentityPublicType">
+      <PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/AccessControls/User/@publicType</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+      <DEFAULT>User</DEFAULT>
+    </COLUMN>
+    <COLUMN name="aceIdentityName">
+      <PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/AccessControls/User/@name</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>240</LENGTH>
+    </COLUMN>
+    <COLUMN name="acePermissions">
+      <PATH syntax="XPATH">/SecTest/AuthDomains/AuthDomain/AccessControls/User/@permissions</PATH>
+      <TYPE>character</TYPE>
+      <DATATYPE>string</DATATYPE>
+      <LENGTH>512</LENGTH>
+    </COLUMN>
+  </TABLE>
+</SXLEMAP>
